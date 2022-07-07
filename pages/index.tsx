@@ -1,10 +1,31 @@
-import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
-
-const Home: NextPage = () => {
-  return <div className={styles.container}>Enjoy_app</div>;
+import axios from "axios";
+import { Video } from "../type";
+import VideoCard from "../components/VideoCard";
+import NoResults from "../components/NoResults";
+interface IProps {
+  videos: Video[];
+}
+const Home = ({ videos }: IProps) => {
+  return (
+    <div>
+      {videos.length ? (
+        videos.map((video: Video) => <VideoCard post={video} key={video._id} />)
+      ) : (
+        <NoResults text={"No Videos"} />
+      )}
+    </div>
+  );
 };
 
+export const getServerSideProps = async () => {
+  const { data } = await axios.get("http://localhost:3000/api/post");
+
+  return {
+    props: {
+      videos: data,
+    },
+  };
+};
 export default Home;

@@ -9,7 +9,6 @@ interface IProps {
   videos: Video[];
 }
 const Home = ({ videos }: IProps) => {
-  console.log("videos", videos);
   return (
     <div>
       {videos.length ? (

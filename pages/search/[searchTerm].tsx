@@ -101,7 +101,6 @@ export const getServerSideProps = async ({
   };
 }) => {
   const res = await axios.get(`${BASE_URL}/api/search/${searchTerm}`);
-  console.log(res);
 
   return {
     props: {

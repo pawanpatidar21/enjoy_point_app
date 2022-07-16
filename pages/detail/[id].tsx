@@ -27,7 +27,6 @@ const Detail = ({ postDetails }: IProps) => {
   const [isPostingComment, setIsPostingcomment] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
-  console.log(postDetails);
 
   const videoRef = useRef<HTMLVideoElement>(null);
 

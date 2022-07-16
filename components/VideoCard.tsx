@@ -27,12 +27,18 @@ const VideoCard = ({ post }: IProps) => {
     }
   };
 
+  useEffect(() => {
+    if (videoRef?.current) {
+      videoRef.current.muted = isVideoMuted;
+    }
+  }, [isVideoMuted]);
+
   return (
     <div className="flex flex-col border-b-2 border-gray-200 pb-6">
       <div>
         <div className="flex gap-3 p-2 cursor-pointer font-semibold rounded">
           <div className="md:w-16 md:h-16 w-10 h-10">
-            <Link href="/">
+            <Link href={`/profile/${post.postedBy._id}`}>
               <>
                 <Image
                   width={62}
@@ -46,13 +52,13 @@ const VideoCard = ({ post }: IProps) => {
             </Link>
           </div>
           <div>
-            <Link href="/">
+            <Link href={`/profile/${post.postedBy._id}`}>
               <div className="flex items-center gap-2">
-                <p className="flex gap-2 items-center md:text-md font-bold text-primary">
+                <p className="flex gap-2 items-center md:text-md font-bold text-white">
                   {post.postedBy.userName}{" "}
-                  <GoVerified className="text-blue-400 text:md" />
+                  <GoVerified className="text-[#ECB365] text:md" />
                 </p>
-                <p className="capitalize font-medium text-xs text-gray-500 hidden md:block">
+                <p className="capitalize font-medium text-xs text-[#ECB365] hidden md:block">
                   {post.postedBy.userName}
                 </p>
               </div>
@@ -66,7 +72,7 @@ const VideoCard = ({ post }: IProps) => {
           onMouseLeave={() => setIsHover(false)}
           className="rounded-3xl"
         >
-          <Link href="/">
+          <Link href={`/detail/${post._id}`}>
             <video
               ref={videoRef}
               loop

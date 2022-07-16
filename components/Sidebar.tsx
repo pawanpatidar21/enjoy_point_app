@@ -14,12 +14,12 @@ const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(true);
   const userprofile = false;
   const normalLink =
-    "flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#F51997] rounded";
+    "flex items-center gap-3 hover:bg-[#064663] p-3 justify-center xl:justify-start cursor-pointer font-semibold text-[#ECB365] rounded";
   return (
     <div>
       <div
         onClick={() => setShowSidebar((prev) => !prev)}
-        className="block xl:hidden m-2 ml-4 mt-3 text-xl"
+        className="block xl:hidden m-2 ml-4 mt-3 text-xl text-white"
       >
         {showSidebar ? <ImCancelCircle /> : <AiOutlineMenu />}
       </div>
@@ -35,33 +35,10 @@ const Sidebar = () => {
               </div>
             </Link>
           </div>
-          {!userprofile && (
-            <div className="px-2 py-4 hidden xl:block">
-              <p className="text-gray-400">
-                Log into like and comment on video
-              </p>
-              <div>
-                <GoogleLogin
-                  clientId=""
-                  render={(renderProps) => (
-                    <button
-                      className="bg-white text-lg cursor-pointer text-[#F51997] border-[1px] border-[#F51997] font-semibold px-6 py-3 rounded-md outline-none w-full mt-3 hover:text-white hover:bg-[#F51997] "
-                      onClick={renderProps.onClick}
-                      disabled={renderProps.disabled}
-                    >
-                      Log in
-                    </button>
-                  )}
-                  onSuccess={() => {}}
-                  onFailure={() => {}}
-                  cookiePolicy="single_host_origin"
-                />
-              </div>
-            </div>
-                  )}
-                  <Discover/>
-                  <SuggestedAccounts />
-                  <Footer/>
+
+          <Discover />
+          <SuggestedAccounts />
+          <Footer />
         </div>
       )}
     </div>
